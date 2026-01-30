@@ -1,0 +1,45 @@
+#include <Servo.h>
+
+Servo puerta;
+
+// Pines del sensor ultrasónico
+const int trigPin = 9;
+const int echoPin = 10;
+
+// Variables
+long duracion;
+int distancia;
+
+void setup() {
+  puerta.attach(6);        // Pin del servomotor
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+
+  puerta.write(0);         // Puerta cerrada
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Enviar pulso ultrasónico
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  // Leer el eco
+  duracion = pulseIn(echoPin, HIGH);
+  distancia = duracion * 0.034 / 2;
+
+  Serial.print("Distancia: ");
+  Serial.println(distancia);
+
+  // Condición para abrir la puerta
+  if (distancia > 0 && distancia <= 20) {
+    puerta.write(90);   // Puerta abierta
+  } else {
+    puerta.write(0);    // Puerta cerrada
+  }
+
+  delay(500);
+}
