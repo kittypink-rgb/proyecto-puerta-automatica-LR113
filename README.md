@@ -4,8 +4,8 @@ Este repositorio contiene el desarrollo del mini proyecto de Mecatrónica
 correspondiente a la asignatura Taller de Automatización 2 (Sección 1113).
 
 ## Integrantes
-- Nombre del alumno 1
-- Nombre del alumno 2
+- Lady Sophia Joya Olivera
+- Ruth Sinai Gomez Pacheco
 
 ## Descripción del proyecto
 El proyecto consiste en el diseño de una puerta automática que detecta la
